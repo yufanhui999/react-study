@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, Fragment, Component } from 'react';
+import axios from 'axios';
+import { render } from '@testing-library/react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import SubComponent from './pages/Sub1'
+
+const ThemeContext = React.createContext('light');
+
+class App extends Component {
+  cb(msg) {
+    console.log(msg)
+  }
+  render () {
+    return (
+      <div>
+        <SubComponent title={'name'} callback={this.cb.bind(this)}/>
+      </div>
+    )
+  }
 }
+
+
 
 export default App;
